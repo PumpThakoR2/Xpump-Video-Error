@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xpump Error</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:#0b0b0b;
+    color:#fff;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* scan effect */
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    animation:move 6s linear infinite;
+    z-index:0;
+}
+
+@keyframes move{
+    from{transform:translateY(0);}
+    to{transform:translateY(20px);}
+}
+
+.wrapper{
+    z-index:1;
+}
+
+.icon{
+    font-size:55px;
+    color:#ff3b3b;
+    animation:blink 1.2s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0.4;}
+}
+
+.error-code{
+    font-size:70px;
+    font-weight:bold;
+    color:#ff3b3b;
+}
+
+.title{
+    font-size:20px;
+    margin-top:10px;
+}
+
+.subtitle{
+    font-size:13px;
+    color:#aaa;
+    margin-top:10px;
+    padding:0 20px;
+    line-height:1.5;
+}
+
+/* button */
+.btn{
+    margin-top:20px;
+    display:inline-block;
+    padding:10px 22px;
+    background:#ff3b3b;
+    color:#fff;
+    text-decoration:none;
+    border-radius:5px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* toast */
+.toast{
+    position:fixed;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#222;
+    color:#fff;
+    padding:12px 20px;
+    border-radius:8px;
+    font-size:14px;
+    opacity:0;
+    pointer-events:none;
+    transition:0.4s;
+}
+
+.toast.show{
+    opacity:1;
+    bottom:50px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="icon">
+        <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+
+    <div class="error-code">404</div>
+    <div class="title">ဗီဒီယို မဖွင့်နိုင်ပါ</div>
+
+    <div class="subtitle">
+        ဒီဗီဒီယိုကို လက်ရှိအချိန်တွင် ဖွင့်မရပါ။<br>
+        နောက်တစ်ခါ ထပ်ကြိုးစားပါ။”
+    </div>
+
+    <!-- Button (no link anymore) -->
+    <div class="btn" onclick="showToast()">ထပ်ကြိုးစားပါ။</div>
+
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast">ပြန်လည်စတင်ပါ။</div>
+
+<script>
+function showToast(){
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    }, 2000);
+}
+</script>
+
+</body>
+</html>
